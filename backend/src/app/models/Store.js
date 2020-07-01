@@ -5,6 +5,7 @@ export class Store extends Model {
     super.init(
       {
         name: DataTypes.STRING,
+        deleted_at: DataTypes.DATE,
       },
       {
         sequelize,

@@ -5,6 +5,10 @@ export class Product extends Model {
     super.init(
       {
         name: DataTypes.STRING,
+        deleted_at: {
+          type: DataTypes.DATE,
+          allowNull: true,
+        },
       },
       {
         sequelize,
