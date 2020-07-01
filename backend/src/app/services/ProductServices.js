@@ -100,9 +100,7 @@ export class ProductServices {
 
       await Product.update({ name }, { where: { id } });
 
-      const productUpdated = this.find({ id });
-
-      return successResponse(productUpdated, 200);
+      return this.find({ id });
     } catch (err) {
       return errorResponse();
     }
