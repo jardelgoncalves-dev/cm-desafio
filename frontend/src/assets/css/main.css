@@ -1,0 +1,15 @@
+.ant-menu.ant-menu-dark {
+  background-color: transparent;
+}
+.ant-layout-header {
+  background-color: #002F6A;
+  display: flex;
+  justify-content: space-between;
+}
+.ant-menu.ant-menu-dark .ant-menu-item-selected {
+  background-color: #114686;
+}
+
+.logo {
+  color: white;
+}
