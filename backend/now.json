@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "env": {
+    "MONGO_URL": "@template_prod_mongo_url",
+    "JWT_SECRET": "@template_prod_jwt",
+    "NODE_ENV": "@template_prod_node_env"
+  },
+  "builds": [
+    { "src": "dist/server.js", "use": "@now/node-server" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "dist/server.js" }
+  ]
+}
