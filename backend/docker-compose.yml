@@ -10,3 +10,14 @@ services:
       - POSTGRES_PASSWORD=postgres
     ports:
       - 5432:5432
+
+  db_test:
+    container_name: POSTGRES_CM_DB_TEST
+    image: postgres:11.2-alpine
+    environment:
+      - TZ=America/Fortaleza
+      - POSTGRES_DB=cm_db_test
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5430:5432
