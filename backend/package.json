@@ -5,6 +5,7 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "docker-compose up -d && NODE_ENV=dev nodemon src/server.js",
+    "dev:start": "NODE_ENV=dev nodemon src/server.js",
     "prebuild": "rimraf ./dist",
     "build": "babel src --out-dir dist",
     "start": "NODE_ENV=dev node dist/server.js",
