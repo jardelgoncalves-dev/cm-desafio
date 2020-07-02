@@ -4,9 +4,8 @@ import { StoreController, ProductController } from '../controllers';
 
 const routes = Router();
 
-// rotas publicas
 routes.get('/', async (req, res) => {
-  res.send('Welcome API Template');
+  res.send('Welcome CM API');
 });
 
 routes.get('/store', StoreController.index);

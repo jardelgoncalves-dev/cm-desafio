@@ -1,0 +1,335 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "CM Desafio API",
+    "description": "Documentação da API desenvolvida no desafio da Casa Magalhães",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "https://lower-goose-87792.herokuapp.com/",
+  "tags": [
+    {
+      "name": "Produtos",
+      "description": "API para produtos no sistema"
+    },
+    {
+      "name": "Lojas",
+      "description": "API para lojas no sistema"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/product": {
+      "get": {
+        "summary": "Obter todos os produtos",
+        "tags": [
+          "Produtos"
+        ],
+        "description": "Obter todos os produtos",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Retorna todos os produtos",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          },
+          "500":{
+            "description": "Internal Error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Cadastro de produto",
+        "tags": [
+          "Produtos"
+        ],
+        "description": "Para cadastrar produtos no sistemas é necessário enviar os seguintes dados, o campo stores não é obrigatório",
+        "parameters": [
+          {
+            "name": "product",
+            "in": "body",
+            "description": "Produto",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Produto cadastrado com sucesso!",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          },
+          "400":{
+            "description": "Campo é obrigatório"
+          },
+          "500":{
+            "description": "Internal Error"
+          }
+        }
+      }
+    },
+    "/product/{id}": {
+      "get": {
+        "summary": "Obtem um único produto",
+        "tags": [
+          "Produtos"
+        ],
+        "description": "Buscar um produto",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Retorna um produtos",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          },
+          "404": {
+            "description": "Produto não encontrado"
+          },
+          "500":{
+            "description": "Internal Error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualiza um produto",
+        "tags": [
+          "Produtos"
+        ],
+        "description": "Atualiza os dados de um produto",
+        "parameters": [
+          {
+            "name": "product",
+            "in": "body",
+            "description": "Produto",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Produto atualizado com sucesso!",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          },
+          "400":{
+            "description": "Campo é obrigatório"
+          },
+          "500":{
+            "description": "Internal Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Exclui  um produto",
+        "tags": [
+          "Produtos"
+        ],
+        "description": "Exclui um produto da base de dados",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "Exlui o produto na base de dados"
+          },
+          "404": {
+            "description": "Produto não encontrado"
+          },
+          "500":{
+            "description": "Internal Error"
+          }
+        }
+      }
+    },
+
+    "/store": {
+      "get": {
+        "summary": "Obter todas as lojas",
+        "tags": [
+          "Lojas"
+        ],
+        "description": "Obter todas as lojas cadastradas",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Retorna um array com todas as lojas",
+            "schema": {
+              "$ref": "#/definitions/Store"
+            }
+          },
+          "500":{
+            "description": "Internal Error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Cadastro de Lojas",
+        "tags": [
+          "Lojas"
+        ],
+        "description": "Para cadastrar produtos no sistemas é necessário enviar os seguintes dados",
+        "parameters": [
+          {
+            "name": "Loja",
+            "in": "body",
+            "description": "Cadastro de loja",
+            "schema": {
+              "$ref": "#/definitions/Store"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Loja cadastrada com sucesso!",
+            "schema": {
+              "$ref": "#/definitions/Store"
+            }
+          },
+          "400":{
+            "description": "Campo é obrigatório"
+          },
+          "500":{
+            "description": "Internal Error"
+          }
+        }
+      }
+    },
+    "/store/{id}": {
+      "get": {
+        "summary": "Obtem uma única loja",
+        "tags": [
+          "Lojas"
+        ],
+        "description": "Buscar por uma loja",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Retorna uma loja",
+            "schema": {
+              "$ref": "#/definitions/Lojas"
+            }
+          },
+          "404": {
+            "description": "Loja não encontrada"
+          },
+          "500":{
+            "description": "Internal Error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualizar loja",
+        "tags": [
+          "Lojas"
+        ],
+        "description": "Atualiza os dados de uma loja",
+        "parameters": [
+          {
+            "name": "Loja",
+            "in": "body",
+            "description": "Atualizar dados",
+            "schema": {
+              "$ref": "#/definitions/Store"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Loja atualizada com sucesso!",
+            "schema": {
+              "$ref": "#/definitions/Store"
+            }
+          },
+          "400":{
+            "description": "Campo é obrigatório"
+          },
+          "500":{
+            "description": "Internal Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Exclui  uma Loja",
+        "tags": [
+          "Lojas"
+        ],
+        "description": "Exclui uma loja da base de dados",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "Exlui a loja na base de dados"
+          },
+          "404": {
+            "description": "Loja não encontrado"
+          },
+          "500":{
+            "description": "Internal Error"
+          }
+        }
+      }
+    }
+  },
+
+  "definitions": {
+    "Product": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "sell": {
+          "type": "number"
+        },
+        "stores": {
+          "type": "number"
+        }
+      }
+    },
+    "Store": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
