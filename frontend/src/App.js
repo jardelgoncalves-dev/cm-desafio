@@ -1,10 +1,12 @@
 import React from 'react';
+import 'antd/dist/antd.css';
+import './assets/css/main.css';
 
-import { Layout } from './components';
+import Routes from './routes';
 
 function App() {
   return (
-    <Layout />
+    <Routes />
   );
 }
 

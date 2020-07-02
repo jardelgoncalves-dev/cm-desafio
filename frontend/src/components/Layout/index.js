@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import { Layout, Menu } from 'antd';
-import 'antd/dist/antd.css';
-import '../../assets/css/main.css';
 
 const { Header, Content, Footer } = Layout;
 
@@ -12,10 +12,18 @@ const LayoutPage = ({ children }) => {
       <div className="logo">
         CM Estoque
       </div>
-      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-        <Menu.Item key="1">Home</Menu.Item>
-        <Menu.Item key="2">Produtos</Menu.Item>
-        <Menu.Item key="3">Recuperar</Menu.Item>
+      <Menu theme="dark" mode="horizontal">
+        <Menu.Item key="1">
+          <Link to="/">
+            Home
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="2">
+          <Link to="/product">
+            Produto
+          </Link>
+        </Menu.Item>
+        
       </Menu>
     </Header>
     <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
