@@ -19,6 +19,7 @@ describe('Product test integration', () => {
     const response = await request(app).post('/product')
       .send({
         name,
+        sell: 20.00,
         stores: store_ids,
       });
 
@@ -65,6 +66,7 @@ describe('Product test integration', () => {
     const response = await request(app).put(`/product/${data.dataValues.id}`)
       .send({
         name: newName,
+        sell: 22.00,
         stores: [...store_ids, newStore.dataValues.id]
       });
 

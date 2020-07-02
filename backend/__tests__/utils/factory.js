@@ -8,6 +8,7 @@ factory.define('Store', Store, {
 
 factory.define('Product', Product, {
   name: faker.name.findName(),
+  sell: 22.22,
 });
 
 export { factory };
