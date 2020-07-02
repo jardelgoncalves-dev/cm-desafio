@@ -9,7 +9,7 @@
       "url": "https://opensource.org/licenses/MIT"
     }
   },
-  "host": "https://lower-goose-87792.herokuapp.com/",
+  "host": "lower-goose-87792.herokuapp.com/",
   "tags": [
     {
       "name": "Produtos",
@@ -45,7 +45,10 @@
           "200": {
             "description": "Retorna todos os produtos",
             "schema": {
-              "$ref": "#/definitions/Product"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Product"
+              }
             }
           },
           "500":{
@@ -80,7 +83,10 @@
             }
           },
           "400":{
-            "description": "Campo é obrigatório"
+            "description": "Campos obrigatórios",
+            "schema": {
+              "$ref": "#/definitions/400 ou 404"
+            }
           },
           "500":{
             "description": "Internal Error"
@@ -94,19 +100,41 @@
         "tags": [
           "Produtos"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "valor numérico",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "schema": {
+            "$ref": "#/definitions/Product"
+          }
+        },
         "description": "Buscar um produto",
         "produces": [
           "application/json"
         ],
         "responses": {
           "200": {
-            "description": "Retorna um produtos",
+            "description": "Retorna um produto",
             "schema": {
               "$ref": "#/definitions/Product"
             }
           },
           "404": {
-            "description": "Produto não encontrado"
+            "description": "Produto não encontrado",
+            "schema": {
+              "$ref": "#/definitions/400 ou 404"
+            }
+          },
+          "400":{
+            "description": "Campos obrigatórios",
+            "schema": {
+              "$ref": "#/definitions/400 ou 404"
+            }
           },
           "500":{
             "description": "Internal Error"
@@ -121,14 +149,17 @@
         "description": "Atualiza os dados de um produto",
         "parameters": [
           {
-            "name": "product",
-            "in": "body",
-            "description": "Produto",
-            "schema": {
-              "$ref": "#/definitions/Product"
-            }
+            "name": "id",
+            "in": "path",
+            "description": "valor numérico",
+            "required": true
           }
         ],
+        "requestBody": {
+          "schema": {
+            "$ref": "#/definitions/Product"
+          }
+        },
         "produces": [
           "application/json"
         ],
@@ -139,8 +170,17 @@
               "$ref": "#/definitions/Product"
             }
           },
+          "404": {
+            "description": "Produto não encontrado",
+            "schema": {
+              "$ref": "#/definitions/400 ou 404"
+            }
+          },
           "400":{
-            "description": "Campo é obrigatório"
+            "description": "Campos obrigatórios",
+            "schema": {
+              "$ref": "#/definitions/400 ou 404"
+            }
           },
           "500":{
             "description": "Internal Error"
@@ -152,16 +192,36 @@
         "tags": [
           "Produtos"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "valor numérico",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "schema": {
+            "type": "object"
+          }
+        },
         "description": "Exclui um produto da base de dados",
         "produces": [
           "application/json"
         ],
         "responses": {
           "204": {
-            "description": "Exlui o produto na base de dados"
+            "schema": {
+              "type": "object"
+            }
           },
           "404": {
-            "description": "Produto não encontrado"
+            "description": "Produto não encontrado",
+            "requestBody": {
+              "schema": {
+                "error": "object"
+              }
+            }
           },
           "500":{
             "description": "Internal Error"
@@ -184,7 +244,10 @@
           "200": {
             "description": "Retorna um array com todas as lojas",
             "schema": {
-              "$ref": "#/definitions/Store"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Store"
+              }
             }
           },
           "500":{
@@ -219,7 +282,10 @@
             }
           },
           "400":{
-            "description": "Campo é obrigatório"
+            "description": "Campos obrigatórios",
+            "schema": {
+              "$ref": "#/definitions/400 ou 404"
+            }
           },
           "500":{
             "description": "Internal Error"
@@ -233,6 +299,14 @@
         "tags": [
           "Lojas"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "valor numérico",
+            "required": true
+          }
+        ],
         "description": "Buscar por uma loja",
         "produces": [
           "application/json"
@@ -241,11 +315,20 @@
           "200": {
             "description": "Retorna uma loja",
             "schema": {
-              "$ref": "#/definitions/Lojas"
+              "$ref": "#/definitions/Store"
             }
           },
           "404": {
-            "description": "Loja não encontrada"
+            "description": "Loja não encontrada",
+            "schema": {
+              "$ref": "#/definitions/400 ou 404"
+            }
+          },
+          "400":{
+            "description": "Campos obrigatórios",
+            "schema": {
+              "$ref": "#/definitions/400 ou 404"
+            }
           },
           "500":{
             "description": "Internal Error"
@@ -257,17 +340,20 @@
         "tags": [
           "Lojas"
         ],
-        "description": "Atualiza os dados de uma loja",
         "parameters": [
           {
-            "name": "Loja",
-            "in": "body",
-            "description": "Atualizar dados",
-            "schema": {
-              "$ref": "#/definitions/Store"
-            }
+            "name": "id",
+            "in": "path",
+            "description": "valor numérico",
+            "required": true
           }
         ],
+        "requestBody": {
+          "schema": {
+            "type": "object"
+          }
+        },
+        "description": "Atualiza os dados de uma loja",
         "produces": [
           "application/json"
         ],
@@ -278,8 +364,17 @@
               "$ref": "#/definitions/Store"
             }
           },
+          "404": {
+            "description": "Loja não encontrada",
+            "schema": {
+              "$ref": "#/definitions/400 ou 404"
+            }
+          },
           "400":{
-            "description": "Campo é obrigatório"
+            "description": "Campos obrigatórios",
+            "schema": {
+              "$ref": "#/definitions/400 ou 404"
+            }
           },
           "500":{
             "description": "Internal Error"
@@ -291,6 +386,14 @@
         "tags": [
           "Lojas"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "valor numérico",
+            "required": true
+          }
+        ],
         "description": "Exclui uma loja da base de dados",
         "produces": [
           "application/json"
@@ -300,7 +403,16 @@
             "description": "Exlui a loja na base de dados"
           },
           "404": {
-            "description": "Loja não encontrado"
+            "description": "Loja não encontrada",
+            "schema": {
+              "$ref": "#/definitions/400 ou 404"
+            }
+          },
+          "400":{
+            "description": "Campos obrigatórios",
+            "schema": {
+              "$ref": "#/definitions/400 ou 404"
+            }
           },
           "500":{
             "description": "Internal Error"
@@ -320,7 +432,20 @@
           "type": "number"
         },
         "stores": {
-          "type": "number"
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "400 ou 404": {
+      "properties": {
+        "error": {
+          "type": "object",
+          "field": {
+            "type": "string"
+          }
         }
       }
     },
