@@ -143,16 +143,13 @@ const Product = () => {
       render: (v) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v)
     },
     {
-      title: 'Disponível em',
+      title: 'Vinculado á',
       dataIndex: 'stores',
       key: 'stores',
-      render: (v) => v.length > 1 ? `${v.length} Lojas` : `${v.length} Loja`
-    },
-    {
-      title: 'Disponível',
-      dataIndex: 'daleted_at',
-      key: 'daleted_at',
-      render: (v) => !v ? 'Sim' : 'Não'
+      render: (v) => {
+        const active = v.filter(p=> p.delete_at === null);
+        return active.length > 1 ? `${active.length} Lojas` : `${active.length} Loja`
+      }
     },
     {
       title: 'Ações',

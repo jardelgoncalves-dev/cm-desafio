@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Row, Col, Modal } from 'antd';
+import { Button, Row, Col, Modal, Spin } from 'antd';
 import { Layout, CardStore, StoreModal } from '../components'
 
 import api from '../services/api';
@@ -73,7 +73,7 @@ const Home = () => {
 
   const onSave = async () => {
     const { id, name } = form
-    
+    if(!name) return;
     try {
       setLoading({ addLoading: true });
       if (id) {
@@ -111,6 +111,14 @@ const Home = () => {
         <Button type="primary" onClick={() => setModalVisible(true)} size="large">Cadastrar loja</Button>
       </div>
       <Row >
+        {loading.fetchLoading && (
+          <div className="container__loading">
+            <Spin size="large" />
+          </div>
+        )}
+        {(!stores || !stores.length) && !loading.fetchLoading && (
+          <span>Você não possui nenhuma loja cadastrada :(</span>
+        )}
         {stores && stores.map(store => (
           <Col key={store.id} style={{ padding: 6 }} xs={32} sm={16} md={8} lg={4}>
             <CardStore

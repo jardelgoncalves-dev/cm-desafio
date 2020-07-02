@@ -31,7 +31,6 @@ const LayoutPage = ({ children }) => {
         {children}
       </div>
     </Content>
-    <Footer style={{ textAlign: 'center' }}>CM Estoque 2020 - Challenge</Footer>
   </Layout>
   )
 }

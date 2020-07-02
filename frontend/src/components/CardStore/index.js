@@ -17,8 +17,8 @@ const CardStore = ({ id, name, onDelete, onEdit }) => {
       }
       actions={[
         <Link to={`store/${id}`}>
-          <Button type="link" key="ver">
-              <EyeOutlined key="eye" />
+          <Button type="ghost" key="ver">
+            Ver
           </Button>
         </Link>,
         <Button type="link" key="edit" onClick={onEdit}>
