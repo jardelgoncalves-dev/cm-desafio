@@ -26,7 +26,7 @@ Foi desenvolvido também um frontend para a iteração com a API, o mesmo foi de
 - `PUT /store/:id`: Altera os dados de uma loja, neste caso somente o `name` (nome)
 - `DELETE /store/:id`: Exclui uma loja
 
-#### Lojas
+#### Produtos
 - `GET /product`: Retorna todos os produtos
 - `GET /product/:id`: Retorna um produto
 - `POST /product`: Cria um produto para isso é preciso enviar:
