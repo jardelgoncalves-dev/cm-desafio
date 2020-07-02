@@ -1,4 +1,4 @@
-import { Store } from '../models';
+import { Store, Product } from '../models';
 import { successResponse, errorResponse } from '../../utils';
 
 export class StoreServices {
@@ -15,6 +15,7 @@ export class StoreServices {
     try {
       const store = await Store.findOne({
         where: { id, deleted_at: null },
+        include: [{ model: Product, as: 'products' }],
       });
 
       if (!store)
@@ -52,7 +53,7 @@ export class StoreServices {
 
       await Store.update({ name }, { where: { id } });
 
-      return successResponse({ ...store, name }, 200);
+      return this.find({ id });
     } catch (err) {
       return errorResponse();
     }
