@@ -3,6 +3,7 @@ Objetivo do desafio é criar uma API RESTFul, que permita uma pequena empresa ca
 
 ### Demo
 [Acessar projeto](https://cm-ten.vercel.app/)
+[Swagger](https://lower-goose-87792.herokuapp.com/api-docs/)
 
 ### Tecnologias utilzadas
 - Swagger: Documentação da API.
