@@ -54,14 +54,15 @@ Foi desenvolvido também um frontend para a iteração com a API, o mesmo foi de
 - Execute:`npm run dev`
 - Após o docker subir todos os containers, execute: `npm run migrate`:
 - Em seguida, acesse o projeto `frontend`
-- Execute: `npm start`
+- Execute: `npm i &&cnpm start`
 
 ### Executando projeto (sem docker)
 - Acesse o arquivo `.env.dev` dentro do projeto `backend`;
 - Adicione suas configurações do banco de dados;
+- Instale as dependências: `npm i`
 - Execute: `npm run migrate && npm run dev:start`
 - Abra outro terminal e acesse o projeto `frontend`
-- Execute: `npm start`
+- Execute: `npm i && npm start`
 
 ### Executando Testes
 - Execute:`npm run migrate:test`
