@@ -43,9 +43,9 @@ export class ProductServices {
     }
   }
 
-  static async store({ name, stores = [] }) {
+  static async store({ name, sell, stores = [] }) {
     try {
-      const product = await Product.create({ name });
+      const product = await Product.create({ name, sell });
 
       await Promise.all(
         stores.map((store_id) =>
@@ -64,7 +64,7 @@ export class ProductServices {
     }
   }
 
-  static async edit({ id, name, stores = [] }) {
+  static async edit({ id, name, sell, stores = [] }) {
     try {
       const product = await Product.findOne({
         where: { id, deleted_at: null },
@@ -98,7 +98,7 @@ export class ProductServices {
         )
       );
 
-      await Product.update({ name }, { where: { id } });
+      await Product.update({ name, sell }, { where: { id } });
 
       return this.find({ id });
     } catch (err) {

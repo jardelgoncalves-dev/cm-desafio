@@ -23,26 +23,28 @@ export class ProductController {
   }
 
   static async store(req, res) {
-    const { name, stores } = req.body;
+    const { name, sell, stores } = req.body;
 
     const validations = validator({
       'name:required': name,
+      'sell:required': sell,
     });
 
     if (validations.hasError()) {
       return res.status(400).json(validations.error);
     }
 
-    const response = await ProductServices.store({ name, stores });
+    const response = await ProductServices.store({ name, sell, stores });
     return res.status(response.status).json(response.data);
   }
 
   static async edit(req, res) {
-    const { name, stores } = req.body;
+    const { name, sell, stores } = req.body;
     const { id } = req.params;
 
     const validations = validator({
       'name:required': name,
+      'sell:required': sell,
       'id:required': id,
     });
 
@@ -50,7 +52,7 @@ export class ProductController {
       return res.status(400).json(validations.error);
     }
 
-    const response = await ProductServices.edit({ id, name, stores });
+    const response = await ProductServices.edit({ id, name, sell, stores });
     return res.status(response.status).json(response.data);
   }
 
